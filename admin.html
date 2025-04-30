@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>後台管理系統</title>
+</head>
+<body>
+  <h1>後台管理系統</h1>
+  <button onclick="fetchBets()">查看下注紀錄</button>
+  <button onclick="fetchReport()">查看週結算報表</button>
+  <button onclick="clearBets()">清空下注資料</button>
+  <div id="result"></div>
+
+<script>
+function fetchBets() {
+  fetch('https://sports-betting-backend.onrender.com/api/bets')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+    });
+}
+
+function fetchReport() {
+  fetch('https://sports-betting-backend.onrender.com/api/report')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+    });
+}
+
+function clearBets() {
+  fetch('https://sports-betting-backend.onrender.com/api/bets', { method: 'DELETE' })
+    .then(() => alert('下注資料已清空'));
+}
+</script>
+</body>
+</html>

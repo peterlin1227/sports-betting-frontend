@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>體育博弈網站 - 賽事列表</title>
+</head>
+<body>
+  <h1>體育博弈網站 - 首頁</h1>
+  <p>這是玩家前台頁面。</p>
+  <script>
+    fetch('https://sports-betting-backend.onrender.com/api/events')
+      .then(res => res.json())
+      .then(data => console.log('賽事資料:', data))
+      .catch(err => console.error('錯誤:', err));
+  </script>
+</body>
+</html>
